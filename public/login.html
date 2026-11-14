@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>AUTHENTICATION // KAWAMOTO PORTAL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="noise"></div>
+    <main class="login-screen">
+      <div class="grid-overlay"></div>
+      <section class="lock-panel" aria-labelledby="login-title">
+        <div class="panel-badge">AUTHENTICATION REQUIRED</div>
+        <h1 id="login-title">PRIVATE PORTAL</h1>
+        <p>ポータルにアクセスするにはパスワードを入力してください。</p>
+
+        <form action="/auth/login" method="post" class="login-form">
+          <label for="password">ACCESS PASSWORD</label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="パスワード"
+            autocomplete="current-password"
+            required
+            autofocus
+          />
+          <button type="submit">UNLOCK</button>
+        </form>
+
+        <p id="login-error" class="login-error" role="alert" hidden>
+          パスワードが違います。もう一度入力してください。
+        </p>
+      </section>
+    </main>
+    <script>
+      if (new URLSearchParams(window.location.search).has("error")) {
+        document.getElementById("login-error").hidden = false;
+      }
+    </script>
+  </body>
+</html>
